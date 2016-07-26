@@ -35,7 +35,9 @@
 	    </mvc:message-converters>
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
-
+	
+	<aop:aspectj-autoproxy proxy-target-class="false"/>
+	
 	<!-- 扫描业务组件,让spring不扫描带有@Service注解的类(留在applicationContext.xml中扫描@Service注解的类),防止事务失效 -->
 	<context:component-scan base-package="cn.wangsy">
         <context:exclude-filter type="annotation"
@@ -107,5 +109,4 @@
         <property name="maxUploadSize" value="-1"/>  
     </bean>  
     
-	
 </beans>
