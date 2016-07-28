@@ -62,7 +62,7 @@ public class DatalogAspect {
 	@Around("insert()")
 	public Object addOperateLog(ProceedingJoinPoint jp) throws Throwable {
 		Object result = jp.proceed();
-		addLog("add", jp.getArgs(), null);
+		addLog(jp.getSignature().getName(), jp.getArgs(), null);
 		return result;
 	}
 
@@ -77,16 +77,14 @@ public class DatalogAspect {
 				Class<?> proxyClass = proxy.getClass();
 				String methodName = jp.getSignature().getName();
 				if (methodName.contains("updateByExample")) {
-					methodName = "selectByExample";
-
-					Method m = BeanUtils.findDeclaredMethod(proxyClass,methodName, new Class[] { objParam[1].getClass() });
+					
+					Method m = BeanUtils.findDeclaredMethod(proxyClass,"selectByExample", new Class[] { objParam[1].getClass() });
 					Object srcData = m.invoke(proxy, objParam[1]);
 					//System.out.println(JSON.toJSON(srcData));
 
-					addLog("update", JSON.toJSONString(srcData),JSON.toJSON(objParam));
+					addLog(methodName, srcData,objParam);
 
 				} else if (methodName.contains("updateByPrimaryKey")) {
-					methodName = "selectByPrimaryKey";
 
 					Object targetObject = AopTargetUtils.getTarget(proxy);
 					Field h = targetObject.getClass().getSuperclass().getDeclaredField("h");
@@ -107,11 +105,12 @@ public class DatalogAspect {
 						Method method = BeanUtils.findDeclaredMethod(objParam[0].getClass(), name, new Class[] {});
 						Object primaryKey = method.invoke(objParam[0]);
 
-						name = "selectByPrimaryKey";
-						method = BeanUtils.findDeclaredMethod(proxyClass, name,new Class[] { primaryKey.getClass() });
+						method = BeanUtils.findDeclaredMethod(proxyClass, "selectByPrimaryKey",new Class[] { primaryKey.getClass() });
 						Object sourceData = method.invoke(proxy, primaryKey);
 
-						addLog("update", JSON.toJSONString(sourceData),JSON.toJSON(objParam));
+						if(null != sourceData){
+							addLog(methodName, sourceData, objParam);
+						}
 					}
 				}
 			} catch (Exception e) {
@@ -126,6 +125,55 @@ public class DatalogAspect {
 	public Object deleteLog(ProceedingJoinPoint jp) throws Throwable {
 		System.out.println("数据删除");
 
+		Object proxy = jp.getThis();
+		Object[] objParam = jp.getArgs();
+
+		if (AopUtils.isAopProxy(proxy)) {// 只有代理对象才需要处理
+			try {
+				Class<?> proxyClass = proxy.getClass();
+				String methodName = jp.getSignature().getName();
+				if (methodName.contains("deleteByExample")) {
+
+					Method m = BeanUtils.findDeclaredMethod(proxyClass,"selectByExample", new Class[] { objParam[1].getClass() });
+					Object srcData = m.invoke(proxy, objParam[1]);
+					//System.out.println(JSON.toJSON(srcData));
+
+					addLog(methodName,srcData,objParam);
+
+				} else if (methodName.contains("deleteByPrimaryKey")) {
+
+					Object targetObject = AopTargetUtils.getTarget(proxy);
+					Field h = targetObject.getClass().getSuperclass().getDeclaredField("h");
+					h.setAccessible(true);
+					MapperProxy aopProxy = (MapperProxy) h.get(targetObject);
+
+					Object object = ReflectionUtils.getFieldValue(aopProxy,"mapperInterface");
+					object = ReflectionUtils.getFieldValue(object, "name");
+					System.out.println(object.toString());
+
+					SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
+					ResultMap map = sqlSessionFactory.getConfiguration().getResultMap(object.toString() + ".BaseResultMap");
+					List<ResultMapping> mapping = map.getIdResultMappings();
+					if (!CollectionUtils.isEmpty(mapping) && mapping.size() == 1) {
+						ResultMapping mp = mapping.get(0);
+						String property = mp.getProperty();
+						//String name = "get"+ property.substring(0, 1).toUpperCase()+ property.substring(1);
+						//Method method = BeanUtils.findDeclaredMethod(objParam[0].getClass(), name, new Class[] {});
+						//Object primaryKey = method.invoke(objParam[0]);
+
+						Method method = BeanUtils.findDeclaredMethod(proxyClass, "selectByPrimaryKey",new Class[] { objParam[0].getClass() });
+						Object sourceData = method.invoke(proxy, objParam[0]);
+						
+						if(null != sourceData){
+							addLog(methodName, sourceData, objParam);
+						}
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();// 记录好异常进行处理
+			}
+		}
+		
 		Object result = jp.proceed();
 		return result;
 	}
@@ -136,7 +184,7 @@ public class DatalogAspect {
 		log.setCreateDate(new Date());
 		log.setSrcData(JSON.toJSONString(srcData));
 		log.setDestData(JSON.toJSONString(destData));
-		log.setOperationType("add");
+		log.setOperationType(operateType);
 		logMapper.insertSelective(log);
 	}
 

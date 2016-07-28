@@ -44,4 +44,17 @@ public class PermissionService {
 		return ret;
 	}
 	
+	public ServiceResult<String> delete(String id){
+		ServiceResult<String> ret = new ServiceResult<String>();
+		if(StringUtils.isBlank(id)){
+			ret.setMsg("删除失败！");
+		}else{
+			permissionMapper.deleteByPrimaryKey(id);
+			
+			ret.setMsg("删除成功！");
+			ret.setSucceed(true);
+		}
+		return ret;
+	}
+	
 }

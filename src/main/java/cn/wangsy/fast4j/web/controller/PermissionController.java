@@ -27,4 +27,10 @@ public class PermissionController {
 		return permissionService.save(permission);
 	}
 	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public Object delete(String id){
+		return permissionService.delete(id);
+	}
+	
 }
