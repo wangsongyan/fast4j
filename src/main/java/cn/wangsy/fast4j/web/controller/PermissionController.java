@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.web.model.entity.gen.Permission;
-import cn.wangsy.fast4j.web.service.PermissionService;
+import cn.wangsy.fast4j.web.service.impl.PermissionService;
 
 /** 
  * 说明：

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.web.model.entity.gen.User;
-import cn.wangsy.fast4j.web.service.UserService;
+import cn.wangsy.fast4j.web.service.impl.UserService;
 
 /** 
  * @author wangsy
@@ -40,27 +40,10 @@ public class AppController {
 		return userService.save(user);
 	}
 	
-	@RequestMapping("/user/update")
-	@ResponseBody
-	public int updateByUserName(String userName,String password){
-		return userService.updateByUserName(userName, password);
-	}
-	
 	@RequestMapping("/chinese")
 	@ResponseBody
 	public String chinese(){
 		return "快速开发平台";
-	}
-	
-	@RequestMapping("/test")
-	@ResponseBody
-	public void test(){
-		try {
-			userService.test();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
 	}
 	
 }

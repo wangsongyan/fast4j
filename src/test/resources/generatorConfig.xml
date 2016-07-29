@@ -46,7 +46,9 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		  
-  		<table tableName="user" domainObjectName="User"></table>
+  		<table tableName="user" domainObjectName="User">
+  			<columnOverride column="auth_data" property="authData" javaType="String" jdbcType="VARCHAR"/>
+  		</table>
 		 
 		<table tableName="log" domainObjectName="Log">
 			<columnOverride column="src_data" property="srcData" javaType="String" jdbcType="VARCHAR"/>
