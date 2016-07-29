@@ -56,6 +56,9 @@
 		</table>
 		
 		<table tableName="permission" domainObjectName="Permission"></table>
+		<table tableName="role" domainObjectName="Role"></table>
+		<table tableName="role_permission" domainObjectName="RolePermission"></table>
+		<table tableName="user_role" domainObjectName="UserRole"></table>
 		  
 	</context>
 		
