@@ -75,21 +75,22 @@ public class SecurityRealm extends AuthorizingRealm{
      */  
     @Override  
     protected AuthenticationInfo doGetAuthenticationInfo(  
-            AuthenticationToken authenticationToken) throws AuthenticationException {  
-        //UsernamePasswordToken对象用来存放提交的登录信息  
-        UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;  
+            AuthenticationToken token) throws AuthenticationException {  
+    	String username = String.valueOf(token.getPrincipal());
+        String password = new String((char[]) token.getCredentials()); 
         //查出是否有此用户  
         User queryUser = new User();
-        queryUser.setUserName(token.getUsername());
-        queryUser.setPassword(token.getPassword().toString());
+        queryUser.setUserName(username);
+        queryUser.setPassword(password);
         ServiceResult<User> ret = authService.loginValidate(queryUser);
         System.out.println(ret.getMsg());
         User user = ret.getData();
         if(user!=null){  
             //若存在，将此用户存放到登录认证info中  
             return new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName());  
-        }  
-        return null;  
+        }else{
+        	throw new AuthenticationException("用户名或密码错误");
+        }
     }  
   
 }  
