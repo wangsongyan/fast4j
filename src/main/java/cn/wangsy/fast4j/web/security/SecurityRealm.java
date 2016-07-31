@@ -15,6 +15,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import com.alibaba.druid.stat.TableStat.Name;
 import com.youymi.youymiframework.service.ServiceResult;
@@ -55,17 +56,19 @@ public class SecurityRealm extends AuthorizingRealm{
         
         final User user = userService.selectUserByAccount(queryUser);
         final List<Role> roleInfos = roleService.selectRolesByUserId(user.getId());
-        for (Role role : roleInfos) {
-            // 添加角色
-            System.err.println(role);
-            authorizationInfo.addRole(role.getRoleSign());
-
-            final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
-            for (Permission permission : permissions) {
-                // 添加权限
-                System.err.println(permission);
-                authorizationInfo.addStringPermission(permission.getPermissionSign());
-            }
+        if(!CollectionUtils.isEmpty(roleInfos)){
+	        for (Role role : roleInfos) {
+	            // 添加角色
+	            System.err.println(role);
+	            authorizationInfo.addRole(role.getRoleSign());
+	
+	            final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
+	            for (Permission permission : permissions) {
+	                // 添加权限
+	                System.err.println(permission);
+	                authorizationInfo.addStringPermission(permission.getPermissionSign());
+	            }
+	        }
         }
         return authorizationInfo; 
     }  

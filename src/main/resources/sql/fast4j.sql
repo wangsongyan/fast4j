@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost-mysql
-Source Server Version : 50712
+Source Server         : localhost
+Source Server Version : 50624
 Source Host           : localhost:3306
 Source Database       : fast4j
 
 Target Server Type    : MYSQL
-Target Server Version : 50712
+Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-07-31 17:35:02
+Date: 2016-07-31 22:30:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,7 @@ CREATE TABLE `permission` (
 -- ----------------------------
 -- Records of permission
 -- ----------------------------
-INSERT INTO `permission` VALUES ('5aad1b1537bb48d5a1052c6a84b28380', '查询用户', 'user:select');
+INSERT INTO `permission` VALUES ('5aad1b1537bb48d5a1052c6a84b28380', '查询用户', 'user:query');
 
 -- ----------------------------
 -- Table structure for role
@@ -76,6 +76,8 @@ CREATE TABLE `role` (
 -- ----------------------------
 -- Records of role
 -- ----------------------------
+INSERT INTO `role` VALUES ('1187b57f9b5b4ab8a180a47a55a3678c', '管理员', 'manager', null);
+INSERT INTO `role` VALUES ('a4509114d1c34b9aba93541e089d2209', '超级管理员', 'admin', null);
 
 -- ----------------------------
 -- Table structure for role_permission
@@ -90,6 +92,7 @@ CREATE TABLE `role_permission` (
 -- ----------------------------
 -- Records of role_permission
 -- ----------------------------
+INSERT INTO `role_permission` VALUES ('6f63d0267a654b90820e77a1c56fbacb', '1187b57f9b5b4ab8a180a47a55a3678c', '5aad1b1537bb48d5a1052c6a84b28380');
 
 -- ----------------------------
 -- Table structure for user
@@ -129,3 +132,4 @@ CREATE TABLE `user_role` (
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
+INSERT INTO `user_role` VALUES ('bd11ac66f4474054a5e38a7664ae7f47', '27db6cac190a410eb571dd386139e1a3', '1187b57f9b5b4ab8a180a47a55a3678c');

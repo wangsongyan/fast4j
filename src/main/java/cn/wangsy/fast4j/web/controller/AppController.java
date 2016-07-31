@@ -46,4 +46,5 @@ public class AppController {
 		return "快速开发平台";
 	}
 	
+	
 }

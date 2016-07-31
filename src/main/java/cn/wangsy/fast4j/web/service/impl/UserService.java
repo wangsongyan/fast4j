@@ -104,11 +104,10 @@ public class UserService {
 			return null;
 		}
 		UserExample example = new UserExample();
-		if(StringUtils.isNotBlank(user.getUserName())){
-			example.or().andUserNameEqualTo(user.getUserName());
-			example.or().andEmailEqualTo(user.getUserName());
-			example.or().andPhoneEqualTo(user.getUserName());
-		}
+		example.or().andUserNameEqualTo(user.getUserName());
+		example.or().andEmailEqualTo(user.getUserName());
+		example.or().andPhoneEqualTo(user.getUserName());
+		
 		List<User> userList = userMapper.selectByExample(example);
 		if(!CollectionUtils.isEmpty(userList)){
 			return userList.get(0);

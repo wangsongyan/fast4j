@@ -93,7 +93,14 @@
 		<location>/static/common/404.html</location>
 	</error-page>
 
-	<!-- <error-page> <error-code>403</error-code> <location>/error/403</location> 
-		</error-page> <error-page> <error-code>500</error-code> <location>/error/500</location> 
-		</error-page> -->
+	<error-page> 
+		<error-code>403</error-code> 
+		<location>/error/403</location> 
+	</error-page> 
+
+	<error-page> 
+		<error-code>500</error-code>
+	 	<location>/error/500</location> 
+	</error-page>
+	
 </web-app>

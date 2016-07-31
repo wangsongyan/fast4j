@@ -2,6 +2,7 @@ package cn.wangsy.fast4j.web.controller;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,7 @@ public class AuthController {
 	public String doLogin(User user){
 		//return authService.loginValidate(user);
 		//使用权限工具进行用户登录，登录成功后跳到shiro配置的successUrl中，与下面的return没什么关系！  
-        SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getUserName(), user.getPassword()));  
+        SecurityUtils.getSubject().login(new UsernamePasswordToken(user.getUserName(), DigestUtils.md5Hex(user.getPassword())));  
         return "redirect:/user";
 	}
 	

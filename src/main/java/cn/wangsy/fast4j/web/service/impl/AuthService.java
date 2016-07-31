@@ -40,7 +40,7 @@ public class AuthService {
 			ret.setMsg("账户信息不正确！");
 			return ret;
 		}
-		if(!DigestUtils.md5Hex(user.getPassword()).equals(dbUser.getPassword())){
+		if(!user.getPassword().equals(dbUser.getPassword())){
 			ret.setMsg("密码不正确");
 			return ret;
 		}
