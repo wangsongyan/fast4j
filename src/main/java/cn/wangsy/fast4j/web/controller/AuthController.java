@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.web.model.entity.gen.User;
-import cn.wangsy.fast4j.web.service.impl.AuthService;
+import cn.wangsy.fast4j.web.service.AuthService;
 
 /** 
  * 说明：

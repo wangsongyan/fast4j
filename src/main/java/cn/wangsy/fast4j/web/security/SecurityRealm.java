@@ -23,10 +23,10 @@ import com.youymi.youymiframework.service.ServiceResult;
 import cn.wangsy.fast4j.web.model.entity.gen.Permission;
 import cn.wangsy.fast4j.web.model.entity.gen.Role;
 import cn.wangsy.fast4j.web.model.entity.gen.User;
-import cn.wangsy.fast4j.web.service.impl.AuthService;
-import cn.wangsy.fast4j.web.service.impl.PermissionService;
-import cn.wangsy.fast4j.web.service.impl.RoleService;
-import cn.wangsy.fast4j.web.service.impl.UserService;
+import cn.wangsy.fast4j.web.service.AuthService;
+import cn.wangsy.fast4j.web.service.PermissionService;
+import cn.wangsy.fast4j.web.service.RoleService;
+import cn.wangsy.fast4j.web.service.UserService;
 
 /** 
  * 说明：

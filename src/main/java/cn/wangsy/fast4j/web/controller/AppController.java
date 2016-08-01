@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.web.model.entity.gen.User;
-import cn.wangsy.fast4j.web.service.impl.UserService;
+import cn.wangsy.fast4j.web.service.UserService;
 
 /** 
  * @author wangsy
@@ -45,6 +45,5 @@ public class AppController {
 	public String chinese(){
 		return "快速开发平台";
 	}
-	
-	
+
 }

@@ -1,4 +1,4 @@
-package cn.wangsy.fast4j.web.service.impl;
+package cn.wangsy.fast4j.web.service;
 
 import javax.annotation.Resource;
 
