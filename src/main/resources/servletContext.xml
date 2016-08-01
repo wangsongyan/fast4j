@@ -14,14 +14,14 @@
 	<!-- 
 	<util:properties id="cfgProperties" location="classpath:env.properties" />   
 	 -->
-	<bean id="propertyConfigurer"
+	<!-- <bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 
 	<!--
 	 <mvc:view-controller path="/" view-name="forward:/auth/login" /> -->
@@ -36,7 +36,8 @@
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
 	
-	<aop:aspectj-autoproxy proxy-target-class="false"/>
+	<!--  
+	<aop:aspectj-autoproxy proxy-target-class="false"/>-->
 	
 	<!-- 扫描业务组件,让spring不扫描带有@Service注解的类(留在applicationContext.xml中扫描@Service注解的类),防止事务失效 -->
 	<context:component-scan base-package="cn.wangsy">

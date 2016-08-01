@@ -13,9 +13,12 @@
      http://www.springframework.org/schema/task  
      http://www.springframework.org/schema/task/spring-task-3.0.xsd">
      
-    <!-- spring task --> 
+    <!-- spring task  
   	<context:annotation-config />    
   	<task:annotation-driven scheduler="qbScheduler" mode="proxy"/>    
     <task:scheduler id="qbScheduler" pool-size="10"/>
+    -->
+
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
 
 </beans> 
