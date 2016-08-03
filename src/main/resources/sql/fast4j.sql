@@ -1,19 +1,36 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50624
+Source Server         : localhost-mysql
+Source Server Version : 50712
 Source Host           : localhost:3306
 Source Database       : fast4j
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2016-07-31 22:30:07
+Date: 2016-08-03 13:53:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for job
+-- ----------------------------
+DROP TABLE IF EXISTS `job`;
+CREATE TABLE `job` (
+  `id` varchar(50) NOT NULL COMMENT 'class的id',
+  `calss_name` varchar(255) DEFAULT NULL COMMENT '类名',
+  `job_desc` varchar(255) DEFAULT NULL COMMENT '任务描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of job
+-- ----------------------------
+INSERT INTO `job` VALUES ('6b0d4360620a48c49a31760032916371', 'cn.wangsy.fast4j.web.quartz.QuartzJobFactory', '测试');
+INSERT INTO `job` VALUES ('8d4a4a67b8264903bae934ffd2451e5b', 'cn.wangsy.fast4j.web.quartz.FileScanJob', '文件扫描');
 
 -- ----------------------------
 -- Table structure for log
@@ -93,6 +110,27 @@ CREATE TABLE `role_permission` (
 -- Records of role_permission
 -- ----------------------------
 INSERT INTO `role_permission` VALUES ('6f63d0267a654b90820e77a1c56fbacb', '1187b57f9b5b4ab8a180a47a55a3678c', '5aad1b1537bb48d5a1052c6a84b28380');
+
+-- ----------------------------
+-- Table structure for schedule_job
+-- ----------------------------
+DROP TABLE IF EXISTS `schedule_job`;
+CREATE TABLE `schedule_job` (
+  `id` varchar(50) NOT NULL COMMENT '任务id',
+  `job_name` varchar(100) DEFAULT NULL COMMENT '任务名称',
+  `job_group` varchar(100) DEFAULT NULL COMMENT '任务分组',
+  `job_status` varchar(10) DEFAULT NULL COMMENT '任务状态',
+  `cron_expression` varchar(200) DEFAULT NULL COMMENT '任务运行时间表达式',
+  `job_desc` varchar(200) DEFAULT NULL COMMENT '任务描述',
+  `class_id` varchar(500) DEFAULT NULL COMMENT '对应执行类的id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务';
+
+-- ----------------------------
+-- Records of schedule_job
+-- ----------------------------
+INSERT INTO `schedule_job` VALUES ('80a7ba8cf427415ab3d837b440ff55d9', '测试任务', '测试分组', '1', '0/10 * * * * ?', '仅仅用于测试', '6b0d4360620a48c49a31760032916371');
+INSERT INTO `schedule_job` VALUES ('a1163667dc9740ca89317f44b651ed55', '测试任务 FileScan', '测试分组', '1', '0/10 * * * * ?', '仅仅用于测试', '8d4a4a67b8264903bae934ffd2451e5b');
 
 -- ----------------------------
 -- Table structure for user
