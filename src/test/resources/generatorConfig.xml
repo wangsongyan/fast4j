@@ -46,6 +46,7 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		  
+  		<!-- 
   		<table tableName="user" domainObjectName="User">
   			<columnOverride column="auth_data" property="authData" javaType="String" jdbcType="VARCHAR"/>
   		</table>
@@ -59,6 +60,9 @@
 		<table tableName="role" domainObjectName="Role"></table>
 		<table tableName="role_permission" domainObjectName="RolePermission"></table>
 		<table tableName="user_role" domainObjectName="UserRole"></table>
+		<table tableName="schedule_job" domainObjectName="ScheduleJob"></table>
+		 -->
+		<table tableName="job" domainObjectName="Job"></table>
 		  
 	</context>
 		

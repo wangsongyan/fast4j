@@ -16,7 +16,9 @@ import org.quartz.TriggerKey;
 //import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
 
-import cn.wangsy.fast4j.web.model.entity.ScheduleJob;
+import cn.wangsy.fast4j.web.model.entity.ScheduleJobAO;
+import cn.wangsy.fast4j.web.model.entity.gen.ScheduleJob;
+import cn.wangsy.fast4j.web.service.ScheduleJobService;
 
 /** 
  * 说明：
@@ -28,27 +30,35 @@ public class QuartzTest {
 
 	@Resource
 	private Scheduler scheduler;
-	private Random random = new Random();
-	
+	@Resource
+	private ScheduleJobService scheduleService;
+
 	public void test() throws SchedulerException{
+		Random random = new Random();
+		
 		//schedulerFactoryBean 由spring创建注入
 		//Scheduler scheduler = schedulerFactoryBean.getScheduler();
 		//这里获取任务信息数据
-		List<ScheduleJob> jobList = DataWorkContext.getAllJob();
-		for (ScheduleJob job : jobList) {
+		List<ScheduleJobAO> jobList = scheduleService.selectList();
+		for (ScheduleJobAO job : jobList) {
 			TriggerKey triggerKey = TriggerKey.triggerKey(job.getJobName(), job.getJobGroup());
 			//获取trigger，即在spring配置文件中定义的 bean id="myTrigger"
 			CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
 			//不存在，创建一个
 			if (null == trigger) {
-				JobDetail jobDetail = null;
+				
+				Class forName = null;
+				try {
+					forName = Class.forName(job.getClassName());
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(forName == null){
+					continue;
+				}
 				//if(random.nextBoolean()){
-					jobDetail = JobBuilder.newJob(QuartzJobFactory.class)
-					.withIdentity(job.getJobName(), job.getJobGroup()).build();
-				//}else{
-//					jobDetail = JobBuilder.newJob(FileScanJob.class)
-//					.withIdentity(job.getJobName(), job.getJobGroup()).build();
-				//}
+				JobDetail jobDetail = JobBuilder.newJob(forName).withIdentity(job.getJobName(), job.getJobGroup()).build();
 				jobDetail.getJobDataMap().put("scheduleJob", job);
 				//表达式调度构建器
 				CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(job.getCronExpression());

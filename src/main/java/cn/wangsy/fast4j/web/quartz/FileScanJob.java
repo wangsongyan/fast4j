@@ -6,7 +6,7 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import cn.wangsy.fast4j.web.model.entity.ScheduleJob;
+import cn.wangsy.fast4j.web.model.entity.gen.ScheduleJob;
 
 /** 
  * 说明：
@@ -22,8 +22,8 @@ public class FileScanJob implements Job{
 		ScheduleJob scheduleJob = (ScheduleJob)context.getMergedJobDataMap().get("scheduleJob");
 		System.out.println(scheduleJob.getJobName());
 		
-		File root = new File("D:/dx-workspace/workshop");
-		scan(root);
+		//File root = new File("D:/dx-workspace/workshop");
+		//scan(root);
 		
 	}
 

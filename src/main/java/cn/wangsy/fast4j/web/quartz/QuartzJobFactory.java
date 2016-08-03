@@ -4,7 +4,7 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import cn.wangsy.fast4j.web.model.entity.ScheduleJob;
+import cn.wangsy.fast4j.web.model.entity.gen.ScheduleJob;
 
 /** 
  * 说明：

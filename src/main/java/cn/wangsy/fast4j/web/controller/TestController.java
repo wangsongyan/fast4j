@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.stereotype.Controller;
 
 import cn.wangsy.fast4j.web.quartz.QuartzTest;
+import cn.wangsy.fast4j.web.service.JobService;
 
 /** 
  * 说明：
@@ -20,6 +21,8 @@ public class TestController {
 
 	@Resource
 	private QuartzTest quartzTest;
+	@Resource
+	private JobService jobService;
 	
 	@RequestMapping("/quartz")
 	@ResponseBody
@@ -29,6 +32,12 @@ public class TestController {
 		} catch (SchedulerException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("/jobList")
+	@ResponseBody
+	public Object jobList(){
+		return jobService.selectList();
 	}
 	
 }
