@@ -1,10 +1,10 @@
-package cn.wangsy.fast4j.web.log;
+package cn.wangsy.fast4j.core.aop;
 
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Pointcut;
+
+import cn.wangsy.fast4j.core.annotation.Operation;
 
 /** 
  * @author wangsy
@@ -15,10 +15,6 @@ public class OperationLogAspect  {
      
 	private LogPoint logPoint;
      
-//	@Pointcut("@annotation(cn.wangsy.fast4j.web.log.Operation)")
-//    public void anyMethod() {}
- 
-//    @Around("anyMethod()")
     public Object saveLog(ProceedingJoinPoint joinPoint)throws Throwable{
     	String methodName = joinPoint.getSignature().getName();
 		Method method = currentMethod(joinPoint, methodName);

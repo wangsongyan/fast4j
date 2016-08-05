@@ -1,4 +1,4 @@
-package cn.wangsy.fast4j.web.log;
+package cn.wangsy.fast4j.core.aop;
 
 import java.util.ArrayList;
 import java.util.Arrays;

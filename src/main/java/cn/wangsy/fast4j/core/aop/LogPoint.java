@@ -1,8 +1,10 @@
-package cn.wangsy.fast4j.web.log;
+package cn.wangsy.fast4j.core.aop;
 
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+
+import cn.wangsy.fast4j.core.annotation.Operation;
 
 /** 
  * 说明：

@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 
+import cn.wangsy.fast4j.core.annotation.Operation;
+import cn.wangsy.fast4j.core.aop.LogPoint;
 import cn.wangsy.fast4j.util.AppUtil;
-import cn.wangsy.fast4j.web.log.LogPoint;
-import cn.wangsy.fast4j.web.log.Operation;
 import cn.wangsy.fast4j.web.model.dao.gen.LogMapper;
 import cn.wangsy.fast4j.web.model.entity.gen.Log;
 
@@ -27,7 +27,7 @@ public class OperationLogSaveImpl implements LogPoint{
 	public void save(ProceedingJoinPoint joinPoint, Method method,
 			Operation operation) {
 		// TODO Auto-generated method stub
-		//System.out.println("save");
+		System.out.println("save");
 		
 		Log log = new Log();
 		log.setId(AppUtil.getUUID());

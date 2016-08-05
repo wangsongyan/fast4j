@@ -1,4 +1,4 @@
-package cn.wangsy.fast4j.web.log;
+package cn.wangsy.fast4j.core.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -6,13 +6,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import cn.wangsy.fast4j.core.aop.OperationType;
+
 /** 
+ * @Descrption 该注解描述方法的操作类型和方法的参数意义
  * @author wangsy
  * @date 创建时间：2016年7月24日 下午10:08:44
  * @version 1.0
- */
-/**
- * @Descrption 该注解描述方法的操作类型和方法的参数意义
  */
 @Target(value = ElementType.METHOD)
 @Retention(value = RetentionPolicy.RUNTIME)

@@ -42,7 +42,7 @@
 	<!-- 激活自动代理功能 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" /> 
 
-	<bean id="operationLogAspect" class="cn.wangsy.fast4j.web.log.OperationLogAspect">
+	<bean id="operationLogAspect" class="cn.wangsy.fast4j.core.aop.OperationLogAspect">
 		<property name="logPoint">
 			<bean class="cn.wangsy.fast4j.web.service.OperationLogSaveImpl"></bean>
 		</property>
@@ -50,7 +50,7 @@
 	
 	<aop:config> 
         <aop:aspect ref="operationLogAspect"> 
-        	<aop:pointcut id="logPointCut" expression="@annotation(cn.wangsy.fast4j.web.log.Operation)" />
+        	<aop:pointcut id="logPointCut" expression="@annotation(cn.wangsy.fast4j.core.annotation.Operation)" />
 			<aop:around pointcut-ref="logPointCut" method="saveLog" />
         </aop:aspect> 
     </aop:config> 
