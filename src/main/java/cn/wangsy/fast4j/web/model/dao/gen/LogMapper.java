@@ -3,7 +3,6 @@
  * Copyright(C) 2011-2016
  * All rights reserved.
  * --------------------------------
- * 20160803
  */
 package cn.wangsy.fast4j.web.model.dao.gen;
 

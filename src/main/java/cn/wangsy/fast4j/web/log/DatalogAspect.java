@@ -35,8 +35,8 @@ import com.alibaba.fastjson.JSON;
  * @author wangsy
  * @date 创建时间：2016年7月25日 下午2:44:39
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class DatalogAspect {
 	//private static final Logger logger = Logger.getLogger(DatalogAspect.class);
 	@Resource

@@ -19,7 +19,7 @@ import java.lang.annotation.Target;
 @Documented
 public @interface Operation {
     /**
-     * @Description 描述操作类型,参见{@linkOperationType ,为必填项
+     * @Description 描述操作类型,参见{@link OperationType} ,为必填项
      */
     OperationType type();
  

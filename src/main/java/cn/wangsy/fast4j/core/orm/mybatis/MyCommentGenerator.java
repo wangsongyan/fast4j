@@ -19,7 +19,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
 		compilationUnit.addFileCommentLine(" * Copyright(C) 2011-2016");
 		compilationUnit.addFileCommentLine(" * All rights reserved.");
 		compilationUnit.addFileCommentLine(" * --------------------------------");
-		compilationUnit.addFileCommentLine(" * " + sdf.format(new Date()));
+		//compilationUnit.addFileCommentLine(" * " + sdf.format(new Date()));
 		compilationUnit.addFileCommentLine(" */");
 	}
 

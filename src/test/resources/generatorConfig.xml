@@ -51,18 +51,20 @@
   			<columnOverride column="auth_data" property="authData" javaType="String" jdbcType="VARCHAR"/>
   		</table>
 		 
-		<table tableName="log" domainObjectName="Log">
-			<columnOverride column="src_data" property="srcData" javaType="String" jdbcType="VARCHAR"/>
-			<columnOverride column="dest_data" property="destData" javaType="String" jdbcType="VARCHAR"/>
-		</table>
+		
 		
 		<table tableName="permission" domainObjectName="Permission"></table>
 		<table tableName="role" domainObjectName="Role"></table>
 		<table tableName="role_permission" domainObjectName="RolePermission"></table>
 		<table tableName="user_role" domainObjectName="UserRole"></table>
 		<table tableName="schedule_job" domainObjectName="ScheduleJob"></table>
-		 -->
+		 
 		<table tableName="job" domainObjectName="Job"></table>
+		  -->
+		  <table tableName="log" domainObjectName="Log">
+			<columnOverride column="src_data" property="srcData" javaType="String" jdbcType="VARCHAR"/>
+			<columnOverride column="dest_data" property="destData" javaType="String" jdbcType="VARCHAR"/>
+		</table>
 		  
 	</context>
 		

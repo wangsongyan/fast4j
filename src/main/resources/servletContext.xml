@@ -36,8 +36,24 @@
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
 	
-	<!--  
-	<aop:aspectj-autoproxy proxy-target-class="false"/>-->
+	
+	
+	
+	<!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" /> 
+
+	<bean id="operationLogAspect" class="cn.wangsy.fast4j.web.log.OperationLogAspect">
+		<property name="logPoint">
+			<bean class="cn.wangsy.fast4j.web.service.OperationLogSaveImpl"></bean>
+		</property>
+	</bean>
+	
+	<aop:config> 
+        <aop:aspect ref="operationLogAspect"> 
+        	<aop:pointcut id="logPointCut" expression="@annotation(cn.wangsy.fast4j.web.log.Operation)" />
+			<aop:around pointcut-ref="logPointCut" method="saveLog" />
+        </aop:aspect> 
+    </aop:config> 
 	
 	<!-- 扫描业务组件,让spring不扫描带有@Service注解的类(留在applicationContext.xml中扫描@Service注解的类),防止事务失效 -->
 	<context:component-scan base-package="cn.wangsy">
