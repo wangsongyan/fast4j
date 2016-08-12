@@ -16,21 +16,20 @@ SSM快速开发框架
 
 ## 使用说明
 1. 使用自定义注解防止Form表单重复提交  
-使用方法：  
-在需要注入Token的方法上添加注解@Token
-``
+  1. 在需要注入Token的方法上添加注解@Token  
+```java
 @Token  
 @RequestMapping("/index")  
 public String page(HttpServletRequest request){  
 	return "/index";  
 }  
-``  
-在需要验证表单是否重复提交的方法添加@TokenValid注解  
-``
+```
+  1. 在需要验证表单是否重复提交的方法添加@TokenValid注解  
+```java
 @TokenValid  
 @RequestMapping("/submit")  
 @ResponseBody  
 public Object submit(HttpServletRequest request){  
 	return "提交成功！";  
 }
-``
+```
