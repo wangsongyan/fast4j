@@ -9,16 +9,12 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-
-import com.alibaba.druid.stat.TableStat.Name;
-import com.youymi.youymiframework.service.ServiceResult;
 
 import cn.wangsy.fast4j.web.model.entity.gen.Permission;
 import cn.wangsy.fast4j.web.model.entity.gen.Role;
@@ -27,6 +23,8 @@ import cn.wangsy.fast4j.web.service.AuthService;
 import cn.wangsy.fast4j.web.service.PermissionService;
 import cn.wangsy.fast4j.web.service.RoleService;
 import cn.wangsy.fast4j.web.service.UserService;
+
+import com.youymi.youymiframework.service.ServiceResult;
 
 /** 
  * 说明：

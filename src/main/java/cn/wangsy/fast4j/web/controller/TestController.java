@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.baomidou.framework.annotations.FormToken;
-
 import cn.wangsy.fast4j.core.annotation.Token;
 import cn.wangsy.fast4j.core.annotation.TokenValid;
 import cn.wangsy.fast4j.web.quartz.QuartzTest;

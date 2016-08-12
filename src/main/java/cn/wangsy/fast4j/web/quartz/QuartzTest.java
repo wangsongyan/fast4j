@@ -1,7 +1,6 @@
 package cn.wangsy.fast4j.web.quartz;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -17,7 +16,6 @@ import org.quartz.TriggerKey;
 import org.springframework.stereotype.Component;
 
 import cn.wangsy.fast4j.web.model.entity.ScheduleJobAO;
-import cn.wangsy.fast4j.web.model.entity.gen.ScheduleJob;
 import cn.wangsy.fast4j.web.service.ScheduleJobService;
 
 /** 
@@ -34,7 +32,7 @@ public class QuartzTest {
 	private ScheduleJobService scheduleService;
 
 	public void test() throws SchedulerException{
-		Random random = new Random();
+		//Random random = new Random();
 		
 		//schedulerFactoryBean 由spring创建注入
 		//Scheduler scheduler = schedulerFactoryBean.getScheduler();

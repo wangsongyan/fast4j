@@ -36,7 +36,6 @@ public class AppController {
 	@RequestMapping("/user/add")
 	@ResponseBody
 	public Object add(User user){
-		XMLMapperBuilder builder;
 		return userService.save(user);
 	}
 	
