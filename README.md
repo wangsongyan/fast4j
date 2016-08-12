@@ -15,8 +15,8 @@ SSM快速开发框架
 - 可以自定义定时任务
 
 ## 使用说明
-1. 使用自定义注解防止Form表单重复提交  
-  1. 在需要注入Token的方法上添加注解@Token  
+1. 使用自定义注解防止Form表单重复提交
+ - 在需要注入Token的方法上添加注解@Token  
 ```java
 @Token  
 @RequestMapping("/index")  
@@ -24,7 +24,7 @@ public String page(HttpServletRequest request){
 	return "/index";  
 }  
 ```
-  1. 在需要验证表单是否重复提交的方法添加@TokenValid注解  
+ - 在需要验证表单是否重复提交的方法添加@TokenValid注解  
 ```java
 @TokenValid  
 @RequestMapping("/submit")  
