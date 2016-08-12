@@ -14,14 +14,14 @@
 	<!-- 
 	<util:properties id="cfgProperties" location="classpath:env.properties" />   
 	 -->
-	<!-- <bean id="propertyConfigurer"
+	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:application.properties</value>
 			</list>
 		</property>
-	</bean> -->
+	</bean>
 
 	<!--
 	 <mvc:view-controller path="/" view-name="forward:/auth/login" /> -->
