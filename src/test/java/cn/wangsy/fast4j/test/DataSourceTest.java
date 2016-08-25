@@ -13,6 +13,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.wangsy.fast4j.web.model.dao.customized.UserDao;
+import cn.wangsy.fast4j.web.model.entity.gen.User;
+
 /** 
  * 说明：
  * @author wangsy
@@ -24,8 +27,17 @@ public class DataSourceTest {
 
 	@Resource
 	private DataSource dataSource;
+	
+	@Resource
+	private UserDao userDao;
 
 	@org.junit.Test
+	public void getUserById(){
+		User user = userDao.getUserById("27db6cac190a410eb571dd386139e1a3");
+		System.out.println(user.getUserName());
+	}
+	
+	
 	public void testDataSource() throws SQLException {
 		Connection connection = dataSource.getConnection();
 		// connection.getMetaData()
