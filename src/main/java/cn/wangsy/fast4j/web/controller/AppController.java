@@ -33,6 +33,12 @@ public class AppController {
 		return userService.selectList();
 	}
 	
+	@RequestMapping("/user1")
+	@ResponseBody
+	public Object user1(){
+		return userService.selectList1();
+	}
+	
 	@RequestMapping("/user/add")
 	@ResponseBody
 	public Object add(User user){

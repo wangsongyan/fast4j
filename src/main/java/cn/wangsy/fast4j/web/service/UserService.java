@@ -11,6 +11,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import cn.wangsy.fast4j.core.annotation.DataSource;
 import cn.wangsy.fast4j.util.AppUtil;
 import cn.wangsy.fast4j.web.model.dao.gen.UserMapper;
 import cn.wangsy.fast4j.web.model.entity.gen.User;
@@ -33,6 +34,12 @@ public class UserService {
 	private SqlSessionFactoryBean sqlSessionFactoryBean;
 	
 	public List<User> selectList(){
+		UserExample example = new UserExample();
+		return userMapper.selectByExample(example);
+	}
+	
+	@DataSource(value="dataSource2")
+	public List<User> selectList1(){
 		UserExample example = new UserExample();
 		return userMapper.selectByExample(example);
 	}
