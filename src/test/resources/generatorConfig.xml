@@ -64,6 +64,7 @@
 		  <table tableName="log" domainObjectName="Log">
 			<columnOverride column="src_data" property="srcData" javaType="String" jdbcType="VARCHAR"/>
 			<columnOverride column="dest_data" property="destData" javaType="String" jdbcType="VARCHAR"/>
+			<columnOverride column="content" property="content" javaType="String" jdbcType="VARCHAR"/>
 		</table>
 		  
 	</context>

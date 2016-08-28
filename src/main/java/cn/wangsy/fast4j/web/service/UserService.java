@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import cn.wangsy.fast4j.core.annotation.DataSource;
+import cn.wangsy.fast4j.core.annotation.Operation;
+import cn.wangsy.fast4j.core.aop.OperationType;
 import cn.wangsy.fast4j.util.AppUtil;
 import cn.wangsy.fast4j.web.model.dao.gen.UserMapper;
 import cn.wangsy.fast4j.web.model.entity.gen.User;
@@ -44,6 +46,7 @@ public class UserService {
 		return userMapper.selectByExample(example);
 	}
 	
+	@Operation(type=OperationType.ADD,desc="添加/修改用户")
 	public ServiceResult<String> save(User user){
 		ServiceResult<String> ret = new ServiceResult<String>();
 		ret.setSucceed(false);
