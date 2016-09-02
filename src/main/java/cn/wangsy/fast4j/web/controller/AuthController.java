@@ -37,4 +37,10 @@ public class AuthController {
         return "redirect:/user";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(){
+		SecurityUtils.getSubject().logout();
+		return "redirect:auth/login";
+	}
+	
 }
