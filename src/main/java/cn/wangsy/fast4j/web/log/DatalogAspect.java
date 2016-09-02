@@ -13,12 +13,10 @@ import org.apache.ibatis.mapping.ResultMapping;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import cn.wangsy.fast4j.util.AopTargetUtils;

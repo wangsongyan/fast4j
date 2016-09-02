@@ -2,7 +2,6 @@ package cn.wangsy.fast4j.web.controller;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
