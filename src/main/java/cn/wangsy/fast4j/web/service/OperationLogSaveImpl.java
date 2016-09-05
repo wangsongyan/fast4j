@@ -58,7 +58,6 @@ public class OperationLogSaveImpl implements LogPoint {
 	 *            方法名称
 	 * @return 操作内容
 	 */
-	@SuppressWarnings("unchecked")
 	public String operateContent(ProceedingJoinPoint joinPoint,
 			String methodName, HttpServletRequest request) {
 		String className = joinPoint.getTarget().getClass().getName();

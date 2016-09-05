@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
+import org.quartz.Job;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
@@ -31,6 +32,7 @@ public class QuartzTest {
 	@Resource
 	private ScheduleJobService scheduleService;
 
+	@SuppressWarnings("unchecked")
 	public void test() throws SchedulerException{
 		//Random random = new Random();
 		
@@ -45,9 +47,9 @@ public class QuartzTest {
 			//不存在，创建一个
 			if (null == trigger) {
 				
-				Class forName = null;
+				Class<? extends Job> forName = null;
 				try {
-					forName = Class.forName(job.getClassName());
+					forName = (Class<? extends Job>) Class.forName(job.getClassName());
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

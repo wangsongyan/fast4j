@@ -87,7 +87,7 @@ public class DatalogAspect {
 					Object targetObject = AopTargetUtils.getTarget(proxy);
 					Field h = targetObject.getClass().getSuperclass().getDeclaredField("h");
 					h.setAccessible(true);
-					MapperProxy aopProxy = (MapperProxy) h.get(targetObject);
+					MapperProxy<?> aopProxy = (MapperProxy<?>) h.get(targetObject);
 
 					Object object = ReflectionUtils.getFieldValue(aopProxy,"mapperInterface");
 					object = ReflectionUtils.getFieldValue(object, "name");
@@ -143,7 +143,7 @@ public class DatalogAspect {
 					Object targetObject = AopTargetUtils.getTarget(proxy);
 					Field h = targetObject.getClass().getSuperclass().getDeclaredField("h");
 					h.setAccessible(true);
-					MapperProxy aopProxy = (MapperProxy) h.get(targetObject);
+					MapperProxy<?> aopProxy = (MapperProxy<?>) h.get(targetObject);
 
 					Object object = ReflectionUtils.getFieldValue(aopProxy,"mapperInterface");
 					object = ReflectionUtils.getFieldValue(object, "name");
@@ -153,8 +153,8 @@ public class DatalogAspect {
 					ResultMap map = sqlSessionFactory.getConfiguration().getResultMap(object.toString() + ".BaseResultMap");
 					List<ResultMapping> mapping = map.getIdResultMappings();
 					if (!CollectionUtils.isEmpty(mapping) && mapping.size() == 1) {
-						ResultMapping mp = mapping.get(0);
-						String property = mp.getProperty();
+						//ResultMapping mp = mapping.get(0);
+						//String property = mp.getProperty();
 						//String name = "get"+ property.substring(0, 1).toUpperCase()+ property.substring(1);
 						//Method method = BeanUtils.findDeclaredMethod(objParam[0].getClass(), name, new Class[] {});
 						//Object primaryKey = method.invoke(objParam[0]);
