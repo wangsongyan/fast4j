@@ -15,7 +15,7 @@
     <ul>
         <#list MethodList as method>
         <li>
-            <h3><a href="${contextPath!}${(method.requestUrl)!}">${(method.requestUrl)!}</a></h3>
+            <h3><a href="${contextPath!}${(method.requestUrl)!}" target="_blank">${(method.requestUrl)!}</a></h3>
             <p>${(method.controllerName)!}</p>
             <p>请求方法：${(method.methodName)!}</p>
             <p>请求方式：${(method.requestType)!}</p>
