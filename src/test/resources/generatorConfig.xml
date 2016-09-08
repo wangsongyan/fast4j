@@ -11,10 +11,10 @@
 	<context id="Tables" targetRuntime="MyBatis3">
 
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-		<plugin
-			type="com.youymi.youymiframework.data.mybatis.MySQLPaginationPlugin"></plugin>
+		<!-- <plugin type="com.youymi.youymiframework.data.mybatis.MySQLPaginationPlugin"></plugin> -->
+		<plugin type="cn.wangsy.fast4j.core.orm.mybatis.generator.plugin.MysqlPaginationPlugin"></plugin>
 
-		<commentGenerator type="cn.wangsy.fast4j.core.orm.mybatis.MyCommentGenerator">
+		<commentGenerator type="cn.wangsy.fast4j.core.orm.mybatis.generator.MyCommentGenerator">
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 <property name="suppressAllComments" 
 				value="true" /> -->
 			<property name="suppressDate" value="true" />
@@ -60,12 +60,14 @@
 		<table tableName="schedule_job" domainObjectName="ScheduleJob"></table>
 		 
 		<table tableName="job" domainObjectName="Job"></table>
-		  -->
+		  
 		  <table tableName="log" domainObjectName="Log">
 			<columnOverride column="src_data" property="srcData" javaType="String" jdbcType="VARCHAR"/>
 			<columnOverride column="dest_data" property="destData" javaType="String" jdbcType="VARCHAR"/>
 			<columnOverride column="content" property="content" javaType="String" jdbcType="VARCHAR"/>
 		</table>
+		-->
+		<table tableName="dictionary_type" domainObjectName="DictionaryType"></table>
 		  
 	</context>
 		

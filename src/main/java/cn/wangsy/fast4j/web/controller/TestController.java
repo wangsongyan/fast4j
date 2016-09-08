@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.core.annotation.Token;
 import cn.wangsy.fast4j.core.annotation.TokenValid;
+import cn.wangsy.fast4j.util.Pager;
 import cn.wangsy.fast4j.web.quartz.QuartzTest;
+import cn.wangsy.fast4j.web.service.DictionaryTypeService;
 import cn.wangsy.fast4j.web.service.JobService;
 
 /** 
@@ -26,6 +28,8 @@ public class TestController {
 	private QuartzTest quartzTest;
 	@Resource
 	private JobService jobService;
+	@Resource
+	private DictionaryTypeService dictionaryTypeService;
 	
 	@RequestMapping("/quartz")
 	@ResponseBody
@@ -57,4 +61,9 @@ public class TestController {
 		return "提交成功！";
 	}
 	
+	@RequestMapping("/listDict")
+	@ResponseBody
+	public Object listDict(Pager pager){
+		return dictionaryTypeService.list(pager);
+	}
 }
