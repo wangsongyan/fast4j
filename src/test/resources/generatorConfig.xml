@@ -11,8 +11,14 @@
 	<context id="Tables" targetRuntime="MyBatis3">
 
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
-		<!-- <plugin type="com.youymi.youymiframework.data.mybatis.MySQLPaginationPlugin"></plugin> -->
 		<plugin type="cn.wangsy.fast4j.core.orm.mybatis.generator.plugin.MysqlPaginationPlugin"></plugin>
+		<!-- <plugin type="cn.wangsy.fast4j.core.orm.mybatis.generator.plugin.DeleteLogicByIdsPlugin">
+			<property name="fieldName" value="is_delete"/>
+		</plugin> -->
+		<!-- <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin> -->
 
 		<commentGenerator type="cn.wangsy.fast4j.core.orm.mybatis.generator.MyCommentGenerator">
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 <property name="suppressAllComments" 
