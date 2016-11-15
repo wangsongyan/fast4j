@@ -3,8 +3,6 @@ package cn.wangsy.fast4j.test;
 import org.junit.Test;
 import org.scribe.builder.api.DefaultApi20;
 
-import cn.wangsy.fast4j.core.oauth2.GithubApi;
-
 /** 
  * 说明：
  * @author wangsy
@@ -14,7 +12,7 @@ public class OAuth2Test {
 
 	@Test
 	public void test(){
-		DefaultApi20 api = new GithubApi("123");
+		DefaultApi20 api = new cn.wangsy.fast4j.core.oauth2.api.GithubApi("123");
 		System.out.println(api.getAccessTokenEndpoint());
 	}
 	
