@@ -429,7 +429,7 @@
 					</dependency>
 					<dependency>
 						<groupId>cn.wangsy</groupId>
-						<artifactId>fast4j</artifactId>
+						<artifactId>fast4j-core</artifactId>
 						<version>0.0.1-SNAPSHOT</version>
 					</dependency>
 				</dependencies>

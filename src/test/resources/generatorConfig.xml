@@ -74,6 +74,10 @@
 		</table>
 		-->
 		<table tableName="dictionary_type" domainObjectName="DictionaryType"></table>
+		<table tableName="oauth_user" domainObjectName="OAuthUser">
+			<columnOverride column="oauth_type" property="oAuthType"></columnOverride>
+			<columnOverride column="oauth_id" property="oAuthId"></columnOverride>
+		</table> 
 		  
 	</context>
 		

@@ -47,8 +47,8 @@ public class UserService {
 	}
 	
 	@Operation(type=OperationType.ADD,desc="添加/修改用户")
-	public ServiceResult<String> save(User user){
-		ServiceResult<String> ret = new ServiceResult<String>();
+	public ServiceResult<User> save(User user){
+		ServiceResult<User> ret = new ServiceResult<User>();
 		ret.setSucceed(false);
 		if(null == user || StringUtils.isBlank(user.getUserName())){
 			ret.setMsg("参数错误！");
@@ -58,14 +58,14 @@ public class UserService {
 			ret.setMsg("用户名不能为空！");
 			return ret;
 		}
-		if(StringUtils.isBlank(user.getEmail())){
-			ret.setMsg("邮箱不能为空！");
-			return ret;
-		}
-		if(StringUtils.isBlank(user.getPhone())){
-			ret.setMsg("手机号码不能为空！");
-			return ret;
-		}
+//		if(StringUtils.isBlank(user.getEmail())){
+//			ret.setMsg("邮箱不能为空！");
+//			return ret;
+//		}
+//		if(StringUtils.isBlank(user.getPhone())){
+//			ret.setMsg("手机号码不能为空！");
+//			return ret;
+//		}
 		if(StringUtils.isBlank(user.getPassword())){
 			ret.setMsg("密码不能为空！");
 			return ret;
@@ -77,15 +77,15 @@ public class UserService {
 				return ret;
 			}
 			
-			if(isEmailExist(user.getEmail())){
-				ret.setMsg("邮箱已存在！");
-				return ret;
-			}
-			
-			if(isPhoneExist(user.getPhone())){
-				ret.setMsg("手机号码已存在！");
-				return ret;
-			}
+//			if(isEmailExist(user.getEmail())){
+//				ret.setMsg("邮箱已存在！");
+//				return ret;
+//			}
+//			
+//			if(isPhoneExist(user.getPhone())){
+//				ret.setMsg("手机号码已存在！");
+//				return ret;
+//			}
 			
 			user.setId(AppUtil.getUUID());
 			user.setPassword(DigestUtils.md5Hex(user.getPassword()));
@@ -93,13 +93,15 @@ public class UserService {
 			userMapper.insertSelective(user);
 			
 			ret.setMsg("添加成功！");
-			ret.setSucceed(false);
+			ret.setSucceed(true);
+			ret.setData(user);
 		}else{
 			user.setUpdatedAt(new Date());
 			userMapper.updateByPrimaryKeySelective(user);
 			
 			ret.setMsg("修改成功！");
-			ret.setSucceed(false);
+			ret.setSucceed(true);
+			ret.setData(user);
 		}
 		return ret;
 	}
@@ -150,5 +152,15 @@ public class UserService {
 		UserExample example = new UserExample();
 		example.createCriteria().andPhoneEqualTo(phone);
 		return userMapper.countByExample(example)>0;
+	}
+
+	public User findByUsername(String userName) {
+		UserExample example = new UserExample();
+		example.createCriteria().andUserNameEqualTo(userName);
+		List<User> users = userMapper.selectByExample(example);
+		if(!CollectionUtils.isEmpty(users)){
+			return users.get(0);
+		}
+		return null;
 	}
 }
