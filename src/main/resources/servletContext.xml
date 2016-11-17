@@ -37,6 +37,27 @@
 	<mvc:default-servlet-handler />
 	
 	
+	<!-- 配置TemplateProcessService -->
+	<bean class="cn.wangsy.fast4j.core.template.impl.FreemarkerTemplateProcessService">
+		<property name="freeMarkerConfigurer">
+			<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+				<property name="templateLoaderPath" value="/WEB-INF/template/" />
+				<property name="defaultEncoding" value="UTF-8" />
+				<property name="freemarkerSettings">
+					<props>
+						<!-- 每隔5秒检查模板是否更新,如果不经常更新模板可将更新的延迟时间设定长一点生成环境一定要设置长一点，24个小时以上吧 -->
+						<prop key="template_update_delay">5</prop>
+						<!-- 指定地区语言环境，我们的语言是中文 -->
+						<prop key="locale">zh_CN</prop>
+						<!-- 指定模板文件的编码格式 -->
+						<prop key="default_encoding">UTF-8</prop>
+						<!-- 指定输出编码 -->
+						<prop key="output_encoding">UTF-8</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+	</bean>
 	
 	
 	<!-- 激活自动代理功能 -->
@@ -95,7 +116,6 @@
 				<prop key="default_encoding">UTF-8</prop>
 				<!-- 指定输出编码 -->
 				<prop key="output_encoding">UTF-8</prop>
-				<prop key="template_update_delay">5</prop>
 				 
 			</props>
 		</property>

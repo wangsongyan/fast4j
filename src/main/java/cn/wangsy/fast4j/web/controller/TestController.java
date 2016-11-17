@@ -1,5 +1,8 @@
 package cn.wangsy.fast4j.web.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.core.annotation.Token;
 import cn.wangsy.fast4j.core.annotation.TokenValid;
+import cn.wangsy.fast4j.core.template.TemplateProcessService;
 import cn.wangsy.fast4j.util.Pager;
 import cn.wangsy.fast4j.web.quartz.QuartzTest;
 import cn.wangsy.fast4j.web.service.DictionaryTypeService;
@@ -30,6 +34,8 @@ public class TestController {
 	private JobService jobService;
 	@Resource
 	private DictionaryTypeService dictionaryTypeService;
+	@Resource
+	private TemplateProcessService templateProcessService;
 	
 	@RequestMapping("/quartz")
 	@ResponseBody
@@ -66,4 +72,16 @@ public class TestController {
 	public Object listDict(Pager pager){
 		return dictionaryTypeService.list(pager);
 	}
+	
+	@RequestMapping("/template")
+	@ResponseBody
+	public Object template(){
+		Map<String, Object> rootMap = new HashMap<String, Object>();
+		rootMap.put("siteName", "爱编程");
+		rootMap.put("verifyCode", "2323");
+		rootMap.put("limit", "5");
+		String result = templateProcessService.process("welcome.ftl", rootMap);
+		return result;
+	}
+	
 }

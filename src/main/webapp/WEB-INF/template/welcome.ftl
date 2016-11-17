@@ -1,0 +1,1 @@
+【xxx】您注册${siteName!}网站的验证码为${verifyCode!}，请于${limit!}分钟内正确输入验证码。
