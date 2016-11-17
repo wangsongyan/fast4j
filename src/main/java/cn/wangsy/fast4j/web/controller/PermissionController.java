@@ -15,7 +15,7 @@ import cn.wangsy.fast4j.web.service.PermissionService;
  * @date 创建时间：2016年7月26日 上午10:52:00
  */
 @Controller
-@RequestMapping("/p")
+@RequestMapping("/permission")
 public class PermissionController {
 
 	@Resource
@@ -31,6 +31,12 @@ public class PermissionController {
 	@ResponseBody
 	public Object delete(String id){
 		return permissionService.delete(id);
+	}
+	
+	@RequestMapping("/selectList")
+	@ResponseBody
+	public Object selectList(){
+		return permissionService.selectList();
 	}
 	
 }

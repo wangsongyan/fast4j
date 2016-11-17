@@ -84,4 +84,9 @@ public class PermissionService {
 		return permissionMapper.selectByExample(permissionExample);
 	}
 	
+	public List<Permission> selectList() {
+		PermissionExample example = new PermissionExample();
+		return permissionMapper.selectByExample(example);
+	}
+	
 }

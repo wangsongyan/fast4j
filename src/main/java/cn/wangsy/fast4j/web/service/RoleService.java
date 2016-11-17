@@ -46,4 +46,10 @@ public class RoleService {
 		return roleMapper.selectByExample(roleExample);
 	}
 
+	// 获取所有角色
+	public List<Role> selectList(){
+		RoleExample example = new RoleExample();
+		return roleMapper.selectByExample(example);
+	}
+	
 }
