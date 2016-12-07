@@ -37,4 +37,8 @@
             </props>  
         </property>  
     </bean>  
+    
+    <bean class="cn.wangsy.fast4j.core.mail.MailService">
+    	<property name="mailSender" ref="mailSender" /> 
+    </bean>
 </beans>

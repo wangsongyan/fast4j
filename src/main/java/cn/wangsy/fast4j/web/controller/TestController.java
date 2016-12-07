@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.quartz.SchedulerException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.wangsy.fast4j.core.annotation.Token;
 import cn.wangsy.fast4j.core.annotation.TokenValid;
+import cn.wangsy.fast4j.core.mail.MailService;
 import cn.wangsy.fast4j.core.template.TemplateProcessService;
 import cn.wangsy.fast4j.util.Pager;
 import cn.wangsy.fast4j.web.quartz.QuartzTest;
@@ -36,6 +38,8 @@ public class TestController {
 	private DictionaryTypeService dictionaryTypeService;
 	@Resource
 	private TemplateProcessService templateProcessService;
+	@Resource
+	private MailService mailService;
 	
 	@RequestMapping("/quartz")
 	@ResponseBody
@@ -82,6 +86,21 @@ public class TestController {
 		rootMap.put("limit", "5");
 		String result = templateProcessService.process("welcome.ftl", rootMap);
 		return result;
+	}
+	
+	@RequestMapping("/mail")
+	@ResponseBody
+	public void send(){
+		Map<String, Object> rootMap = new HashMap<String, Object>();
+		rootMap.put("siteName", "爱编程");
+		rootMap.put("verifyCode", "2323");
+		rootMap.put("limit", "5");
+		String result = templateProcessService.process("welcome.ftl", rootMap);
+		try {
+			mailService.send("wangsongyanlove@163.com", "1104237534@qq.com", "验证码", result, false);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
