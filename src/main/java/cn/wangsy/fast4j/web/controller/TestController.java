@@ -20,6 +20,7 @@ import cn.wangsy.fast4j.util.Pager;
 import cn.wangsy.fast4j.web.quartz.QuartzTest;
 import cn.wangsy.fast4j.web.service.DictionaryTypeService;
 import cn.wangsy.fast4j.web.service.JobService;
+import cn.wangsy.fast4j.web.service.TestService;
 
 /** 
  * 说明：
@@ -40,6 +41,8 @@ public class TestController {
 	private TemplateProcessService templateProcessService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private TestService testService;
 	
 	@RequestMapping("/quartz")
 	@ResponseBody
@@ -101,6 +104,12 @@ public class TestController {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("transaction")
+	@ResponseBody
+	public void transaction(){
+		testService.test();
 	}
 	
 }
