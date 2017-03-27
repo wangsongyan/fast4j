@@ -16,4 +16,7 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<bean class="cn.wangsy.fast4j.core.aop.DynamicDataSourceAspect"></bean>
+	<bean class="cn.wangsy.fast4j.core.aop.ReSubmitAspect"></bean>
+
 </beans>
