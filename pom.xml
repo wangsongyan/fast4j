@@ -363,9 +363,9 @@
 	    </dependency>
 	
 		<dependency>
-			<groupId>cn.wangsy</groupId>
+			<groupId>com.github.wangsongyan</groupId>
 			<artifactId>fast4j-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	
 	</dependencies>
